@@ -1,0 +1,27 @@
+@using PokeBlazor.Shared
+<div class="ui segment">
+    <h3>Stats</h3>
+    <table class="ui celled table">
+        <thead>
+            <th>Name</th>
+            <th>Effort</th>
+            <th>Base Effort</th>
+        </thead>
+        <tbody>
+        @foreach(var stat in StatsData)
+        {
+            <tr>
+                <td>@stat.stat.name</td>
+                <td>@stat.effort</td>
+                <td>@stat.base_stat</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@functions
+{
+    // Parameters
+    public List<Stats> StatsData { get; set; }
+}

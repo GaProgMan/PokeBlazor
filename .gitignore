@@ -286,3 +286,5 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+PokeBlazor.Client/.DS_Store
+PokeBlazor.Client/wwwroot/.DS_Store

@@ -1,0 +1,20 @@
+﻿@inject PokeState state
+
+<div id="search-and-results-area">
+    <div id="search-area">
+        <RandomPokemonSearch OnGetPokemon=state.GetPokemon/>
+    </div>
+    <div id="results-area">
+        <GreyOutZone Searching=state.SearchInProgress>
+            <RandomPokemonResult PokemonToDisplay=state.PokemonSearchResult/>
+        </GreyOutZone>
+    </div>
+</div>
+
+@functions
+{
+    protected override void OnInit()
+    {
+        state.OnChange += StateHasChanged;
+    }
+}

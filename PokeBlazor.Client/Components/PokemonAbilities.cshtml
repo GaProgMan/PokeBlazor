@@ -1,0 +1,27 @@
+@using PokeBlazor.Shared
+<div class="ui segment">
+    <h3>Abilities</h3>
+    <table class="ui celled table">
+        <thead>
+            <th>Name</th>
+            <th>Slot</th>
+            <th>Is Hidden</th>
+        </thead>
+        <tbody>
+        @foreach(var ability in AbilitiesData)
+        {
+            <tr>
+                <td>@ability.ability.name</td>
+                <td>@ability.slot</td>
+                <td>@ability.IsHiddenString()</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@functions
+{
+    // Parameters
+    public List<Ability> AbilitiesData { get; set; }
+}

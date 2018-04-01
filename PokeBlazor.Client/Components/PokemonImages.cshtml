@@ -1,0 +1,74 @@
+@using PokeBlazor.Shared
+<div class="row">
+    <h2>Male</h2>
+    <div class="ui celled grid">
+        <div class="row">
+            @if (SpriteData.HasFrontShiny)
+            {
+                <div class="eight wide column">
+                    <h3 class="">Shiny</h3>
+                    <img class="ui fluid image" src="@SpriteData.front_shiny">
+                </div>
+            }
+            <div class="eight wide column">
+                <h3>Standard</h3>
+                <img class="ui fluid image" src="@SpriteData.front_default">
+            </div>
+            @if (SpriteData.HasBackShiny)
+            {
+                <div class="eight wide column">
+                    <h3 class="">Shiny</h3>
+                    <img class="ui fluid image" src="@SpriteData.back_shiny">
+                </div>
+            }
+            <div class="eight wide column">
+                <h3>Back</h3>
+                <img class="ui fluid image" src="@SpriteData.back_default">
+            </div>
+        </div>
+    </div>
+</div>
+@if(SpriteData.HasFemaleImages)
+{
+    <div class="row">
+        <h2>Female</h2>
+        <div class="ui celled grid">
+            <div class="row">
+                @if (SpriteData.HasFrontShinyFemale)
+                {
+                    <div class="eight wide column">
+                        <h3 class="">Shiny</h3>
+                        <img class="ui fluid image" src="@SpriteData.front_shiny_female">
+                    </div>
+                }
+                @if(SpriteData.HasFrontFemale)
+                {
+                    <div class="eight wide column">
+                        <h3>Standard</h3>
+                        <img class="ui fluid image" src="@SpriteData.front_female">
+                    </div>
+                }
+                @if (SpriteData.HasBackShinyFemale)
+                {
+                    <div class="eight wide column">
+                        <h3 class="">Shiny</h3>
+                        <img class="ui fluid image" src="@SpriteData.back_shiny_female">
+                    </div>
+                }
+                @if (SpriteData.HasBackFemale)
+                {
+                    <div class="eight wide column">
+                        <h3 class="">Standard</h3>
+                        <img class="ui fluid image" src="@SpriteData.back_female">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@functions
+{
+    // Parameters
+    public PokemonSprite SpriteData { get; set; }
+}

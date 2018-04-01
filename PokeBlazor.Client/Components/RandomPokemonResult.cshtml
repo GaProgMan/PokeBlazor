@@ -1,0 +1,57 @@
+﻿@using PokeBlazor.Shared
+@if (PokemonToDisplay != null)
+{
+    <div class="ui grid">
+        <div class="row">
+            <div class="ui two column centered grid">
+                <h2>@PokemonToDisplay.name</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui two column centered grid">
+                <div class="two wide column">
+                    <label>Weight: @PokemonToDisplay.weight</label>
+                </div>
+                <div class="two wide column">
+                    <label>Height: @PokemonToDisplay.height</label>
+                </div>
+                <div class="two wide column">
+                    <label>Base Exp: @PokemonToDisplay.base_experience pt</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui two column centered grid">
+                <h3>Types</h3>
+                @foreach (var type in PokemonToDisplay.OrderedTypes)
+                {
+                    <div class="one wide column">
+                        <label>@type.TypeName</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui two column centered grid">
+                <div class="left floated six wide column">
+                    <div class="ui segment">
+                    @if(PokemonToDisplay.sprites != null)
+                    {
+                        <PokemonImages SpriteData=PokemonToDisplay.sprites/>
+                    }
+                    </div>
+                </div>
+                <div class="right floated left aligned six wide column">
+                    <PokemonAbilities AbilitiesData="PokemonToDisplay.abilities" />
+                    <PokemonStats StatsData="PokemonToDisplay.stats" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@functions
+{
+    // Parameters
+    public Pokemon PokemonToDisplay { get; set; }
+}

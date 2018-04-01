@@ -1,0 +1,27 @@
+﻿
+<div class="ui grid">
+    <div class="row">
+        <div class="ui two column centered grid">
+            <h1>PokeyMans Decks</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="ui two column centered grid">
+            <p>Enter the ID of a PokeyMans in the input box and click on `Search` to find out about that PokeyMans</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="ui two column centered grid">
+            <input type="text" @bind(PokemonId) />
+        </div>
+        <div class="ui two column centered grid">
+            <button @onclick(() => OnGetPokemon(PokemonId)) type="button" class="ui secondary button">Search</button>
+        </div>
+    </div>
+</div>
+
+@functions
+{
+    public Func<string, Task> OnGetPokemon { get; set; }
+    public string PokemonId { get; set; }
+}

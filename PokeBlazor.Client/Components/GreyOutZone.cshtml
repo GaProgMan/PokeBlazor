@@ -1,0 +1,24 @@
+﻿<div>
+    <div class="cover">
+        @if(Searching)
+        {
+            <div class="ui grid">
+                <div class="row">
+                    <div class="ui two column centered grid">
+                        <img class="ui small image" src="/images/loading-spinner.gif">
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            @ChildContent
+        }
+    </div>
+</div>
+
+@functions
+{
+    public RenderFragment ChildContent { get; set; }
+    public bool Searching { get; set; }
+}
