@@ -22,7 +22,7 @@ The following software needs to be installed:
 
 ## Building and Running the Project
 
-If the sln file is opened with Visual Studio 15.7 Preview, then hitting Ctrl+F5 (or just F5) will start DwBlazor.Server, which will start the application.
+If the sln file is opened with Visual Studio 15.7 Preview, then hitting Ctrl+F5 (or just F5) will start PokeBlazor.Server, which will start the application.
 
 If running from the command line, you will need to cd into the PokeBlazor.Server directory and run:
 
