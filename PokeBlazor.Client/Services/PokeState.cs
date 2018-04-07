@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Blazor;
+using PokeBlazor.Client.Helpers;
 using PokeBlazor.Shared;
 
 namespace PokeBlazor.Client.Services
@@ -10,6 +11,7 @@ namespace PokeBlazor.Client.Services
     {
         public Pokemon PokemonSearchResult { get; private set; }
         public bool SearchInProgress { get; private set; }
+        public bool SuppliedIdIsValid { get; private set; } = true;
 
         // Lets components receive change notifications
         // Could have whatever granularity you want (more events, hierarchy...)
@@ -26,8 +28,14 @@ namespace PokeBlazor.Client.Services
         {
             SearchInProgress = true;
             NotifyStateChanged();
-            
-            PokemonSearchResult = await http.GetJsonAsync<Pokemon>($"https://pokeapi.co/api/v2/pokemon/{id}/");
+
+            SuppliedIdIsValid = PokemonIdValidator.ValidateId(id);
+
+            if (SuppliedIdIsValid)
+            {
+                // onyl search if the ID is valid
+                PokemonSearchResult = await http.GetJsonAsync<Pokemon>($"https://pokeapi.co/api/v2/pokemon/{id}/");
+            }
             
             SearchInProgress = false;
             NotifyStateChanged();
