@@ -1,4 +1,25 @@
 ﻿@using PokeBlazor.Shared
+
+@if (!ValidSearchId)
+{
+    <div class="ui grid">
+        <div class="row">
+            <div class="ui three column centered grid">
+                <div class="column">
+                    <div class="ui error message">
+                        <div class="header">The ID you supplied does not seem valid</div>
+                        <ul class="list">
+                            <li>It must not be empty.</li>
+                            <li>It must be a positive integer (no decimal point).</li>
+                            <li>It must be less than 803 (there are only 802 Pokemon)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 @if (PokemonToDisplay != null)
 {
     <div class="ui grid">
@@ -54,4 +75,5 @@
 {
     // Parameters
     public Pokemon PokemonToDisplay { get; set; }
+    public bool ValidSearchId { get; set; }
 }
