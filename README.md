@@ -30,6 +30,6 @@ If running from the command line, you will need to cd into the PokeBlazor.Server
 dotnet run
 ```
 ## Publishing
-A Dockerfile has been provided, so you can publish and run a container like so. (the example below is accessible on http://localhost:8080)
+A Dockerfile has been provided, so you can publish and run a container like so. The example below is accessible on http://localhost:8080
 ``` docker build -t pokeblazor .
 docker run -p 8080:80 pokeblazor```
