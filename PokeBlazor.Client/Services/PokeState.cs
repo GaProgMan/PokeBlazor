@@ -31,11 +31,11 @@ namespace PokeBlazor.Client.Services
 
             SuppliedIdIsValid = PokemonIdValidator.ValidateId(id);
 
-            if (SuppliedIdIsValid)
-            {
-                // onyl search if the ID is valid
-                PokemonSearchResult = await http.GetJsonAsync<Pokemon>($"https://pokeapi.co/api/v2/pokemon/{id}/");
-            }
+            // only search if the ID is valid, otherwise ensure that
+            // the value is null (which hides the component)
+            PokemonSearchResult = SuppliedIdIsValid
+                ? await http.GetJsonAsync<Pokemon>($"https://pokeapi.co/api/v2/pokemon/{id}/")
+                : null;
             
             SearchInProgress = false;
             NotifyStateChanged();
