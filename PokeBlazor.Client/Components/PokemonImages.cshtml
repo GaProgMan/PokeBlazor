@@ -2,30 +2,43 @@
 <div class="row">
     <h2>Male</h2>
     <div class="ui celled grid">
-        <div class="row">
-            @if (SpriteData.HasFrontShiny)
-            {
-                <div class="eight wide column">
-                    <h3 class="">Shiny</h3>
-                    <img class="ui fluid image" src="@SpriteData.front_shiny">
-                </div>
-            }
-            <div class="eight wide column">
-                <h3>Standard</h3>
-                <img class="ui fluid image" src="@SpriteData.front_default">
+        @if(SpriteData.HasAnyMaleImages)
+        {
+            <div class="row">
+                @if (SpriteData.HasFrontShiny)
+                {
+                    <div class="eight wide column">
+                        <h3 class="">Shiny</h3>
+                        <img class="ui fluid image" src="@SpriteData.front_shiny">
+                    </div>
+                }
+                @if(SpriteData.HasFront)
+                {
+                    <div class="eight wide column">
+                        <h3>Standard</h3>
+                        <img class="ui fluid image" src="@SpriteData.front_default">
+                    </div>
+                }
+                @if (SpriteData.HasBackShiny)
+                {
+                    <div class="eight wide column">
+                        <h3 class="">Shiny</h3>
+                        <img class="ui fluid image" src="@SpriteData.back_shiny">
+                    </div>
+                }
+                @if (SpriteData.HasBack)
+                {
+                    <div class="eight wide column">
+                        <h3>Back</h3>
+                        <img class="ui fluid image" src="@SpriteData.back_default">
+                    </div>
+                }
             </div>
-            @if (SpriteData.HasBackShiny)
-            {
-                <div class="eight wide column">
-                    <h3 class="">Shiny</h3>
-                    <img class="ui fluid image" src="@SpriteData.back_shiny">
-                </div>
-            }
-            <div class="eight wide column">
-                <h3>Back</h3>
-                <img class="ui fluid image" src="@SpriteData.back_default">
-            </div>
-        </div>
+        }
+        else
+        {
+            <p>Unable to find any sprites</p>
+        }
     </div>
 </div>
 @if(SpriteData.HasFemaleImages)
