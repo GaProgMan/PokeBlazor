@@ -12,10 +12,10 @@
     </div>
     <div class="row">
         <div class="ui two column centered grid">
-            <input type="text" @bind(PokemonId) />
+            <input type="text" bind="@PokemonId" />
         </div>
         <div class="ui two column centered grid">
-            <button @onclick(() => OnGetPokemon(PokemonId)) type="button" class="ui secondary button">Search</button>
+            <button onclick="@(() => OnGetPokemon(PokemonId))" type="button" class="ui secondary button">Search</button>
         </div>
     </div>
 </div>
