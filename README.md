@@ -26,7 +26,7 @@ docker pull gaprogman/pokeblazor:0.2.0
 To run the image, issue the following command:
 
 ```
-docker run -d -p 5000:8080 --name pokeblazor gaprogman/pokeblazor:0.2.0
+docker run -d -p 8080:5000 --name pokeblazor gaprogman/pokeblazor:0.2.0
 ```
 
 The above command will:
