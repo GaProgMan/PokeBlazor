@@ -18,7 +18,7 @@ Pull requests are welcome, but please take a moment to read the Code of Conduct 
 PokeBlazor is now available on docker hub at [gaprogman/pokeblazor](https://hub.docker.com/r/gaprogman/pokeblazor/). To pull the latest version of the image, run the following command:
 
 ```
-docker pull gaprogman/pokeblazor:0.2.0
+docker pull gaprogman/pokeblazor:0.3.0
 ```
 
 (the above assumes that you have docker installed and set up on your machine)
