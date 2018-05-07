@@ -5,32 +5,18 @@
         @if(SpriteData.HasAnyMaleImages)
         {
             <div class="row">
-                @if (SpriteData.HasFrontShiny)
-                {
-                    <div class="eight wide column">
-                        <h3 class="">Shiny</h3>
-                        <img class="ui fluid image" src="@SpriteData.front_shiny">
-                    </div>
-                }
                 @if(SpriteData.HasFront)
                 {
-                    <div class="eight wide column">
-                        <h3>Standard</h3>
-                        <img class="ui fluid image" src="@SpriteData.front_default">
-                    </div>
-                }
-                @if (SpriteData.HasBackShiny)
-                {
-                    <div class="eight wide column">
-                        <h3 class="">Shiny</h3>
-                        <img class="ui fluid image" src="@SpriteData.back_shiny">
+                    <div class="eight wide column" onmouseover="@OnMaleFrontMouseOver" onmouseout="@OnMaleFrontMouseOut" >
+                        <h3>@(string.IsNullOrEmpty(maleFrontImgTitle) ? "Standard" : maleFrontImgTitle)</h3>
+                        <img class="ui fluid image" src="@(string.IsNullOrEmpty(maleFrontImageSrc) ? SpriteData.front_default : maleFrontImageSrc)" />
                     </div>
                 }
                 @if (SpriteData.HasBack)
                 {
-                    <div class="eight wide column">
-                        <h3>Back</h3>
-                        <img class="ui fluid image" src="@SpriteData.back_default">
+                    <div class="eight wide column" onmouseover="@OnMaleBackMouseOver" onmouseout="@OnMaleBackMouseOut">
+                        <h3>@(string.IsNullOrEmpty(maleBackImgTitle) ? "Standard" : maleBackImgTitle)</h3>
+                        <img class="ui fluid image" src="@(string.IsNullOrEmpty(maleBackImageSrc) ? SpriteData.back_default : maleBackImageSrc)" />
                     </div>
                 }
             </div>
@@ -47,32 +33,18 @@
         <h2>Female</h2>
         <div class="ui celled grid">
             <div class="row">
-                @if (SpriteData.HasFrontShinyFemale)
-                {
-                    <div class="eight wide column">
-                        <h3 class="">Shiny</h3>
-                        <img class="ui fluid image" src="@SpriteData.front_shiny_female">
-                    </div>
-                }
                 @if(SpriteData.HasFrontFemale)
                 {
-                    <div class="eight wide column">
-                        <h3>Standard</h3>
-                        <img class="ui fluid image" src="@SpriteData.front_female">
-                    </div>
-                }
-                @if (SpriteData.HasBackShinyFemale)
-                {
-                    <div class="eight wide column">
-                        <h3 class="">Shiny</h3>
-                        <img class="ui fluid image" src="@SpriteData.back_shiny_female">
+                    <div class="eight wide column" onmouseover="@OnFemaleFrontMouseOver" onmouseout="@OnFemaleFrontMouseOut">
+                        <h3>@(string.IsNullOrEmpty(femaleFrontImgTitle) ? "Standard" : femaleFrontImgTitle)</h3>
+                        <img class="ui fluid image" src="@(string.IsNullOrEmpty(femaleFrontImageSrc) ? SpriteData.front_female : femaleFrontImageSrc)" />
                     </div>
                 }
                 @if (SpriteData.HasBackFemale)
                 {
-                    <div class="eight wide column">
-                        <h3 class="">Standard</h3>
-                        <img class="ui fluid image" src="@SpriteData.back_female">
+                    <div class="eight wide column" onmouseover="@OnFemaleBackMouseOver" onmouseout="@OnFemaleBackMouseOut">
+                        <h3>@(string.IsNullOrEmpty(femaleBackImgTitle) ? "Standard" : femaleBackImgTitle)</h3>
+                        <img class="ui fluid image" src="@(string.IsNullOrEmpty(femaleBackImageSrc) ? SpriteData.back_female : femaleBackImageSrc)" />
                     </div>
                 }
             </div>
@@ -82,6 +54,79 @@
 
 @functions
 {
-    // Parameters
-    public PokemonSprite SpriteData { get; set; }
+    [Parameter]
+    private PokemonSprite SpriteData { get; set; }
+
+    string maleFrontImgTitle = String.Empty;
+    string maleFrontImageSrc = String.Empty;
+
+    string maleBackImageSrc = String.Empty;
+    string maleBackImgTitle = String.Empty;
+
+    string femaleFrontImgTitle = String.Empty;
+    string femaleFrontImageSrc = String.Empty;
+
+    string femaleBackImgTitle = String.Empty;
+    string femaleBackImageSrc = String.Empty;
+
+    void OnMaleFrontMouseOver()
+    {
+        if (SpriteData.HasFrontShiny)
+        {
+            maleFrontImgTitle = "Shiny";
+            maleFrontImageSrc = SpriteData.front_shiny;
+        }
+    }
+
+    void OnMaleFrontMouseOut()
+    {
+        maleFrontImgTitle = "Standard";
+        maleFrontImageSrc = SpriteData.front_default;
+    }
+
+    void OnMaleBackMouseOver()
+    {
+        if (SpriteData.HasBackShiny)
+        {
+            maleBackImgTitle = "Shiny";
+            maleBackImageSrc = SpriteData.back_shiny;
+        }
+    }
+
+    void OnMaleBackMouseOut()
+    {
+        maleBackImgTitle = "Standard";
+        maleBackImageSrc = SpriteData.back_default;
+    }
+
+    void OnFemaleFrontMouseOver()
+    {
+        if (SpriteData.HasFrontShinyFemale)
+        {
+            femaleFrontImgTitle = "Shiny";
+            femaleFrontImageSrc = SpriteData.front_shiny_female;
+        }
+    }
+
+    void OnFemaleFrontMouseOut()
+    {
+        femaleFrontImgTitle = "Standard";
+        femaleFrontImageSrc = SpriteData.front_female;
+    }
+
+    
+    void OnFemaleBackMouseOver()
+    {
+        if (SpriteData.HasBackShinyFemale)
+        {
+            femaleBackImgTitle = "Shiny";
+            femaleBackImageSrc = SpriteData.back_shiny_female;
+        }
+    }
+
+    void OnFemaleBackMouseOut()
+    {
+        femaleBackImgTitle = "Standard";
+        femaleBackImageSrc = SpriteData.back_female;
+    }
 }

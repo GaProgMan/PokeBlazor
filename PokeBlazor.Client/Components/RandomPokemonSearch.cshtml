@@ -22,6 +22,9 @@
 
 @functions
 {
-    public Func<string, Task> OnGetPokemon { get; set; }
-    public string PokemonId { get; set; }
+    [Parameter]
+    private Func<string, Task> OnGetPokemon { get; set; }
+
+    [Parameter]
+    private string PokemonId { get; set; }
 }
