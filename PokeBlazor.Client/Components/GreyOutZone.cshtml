@@ -26,6 +26,9 @@
 
 @functions
 {
-    public RenderFragment ChildContent { get; set; }
-    public bool Searching { get; set; }
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    private bool Searching { get; set; }
 }

@@ -73,7 +73,9 @@
 
 @functions
 {
-    // Parameters
-    public Pokemon PokemonToDisplay { get; set; }
-    public bool ValidSearchId { get; set; }
+    [Parameter]
+    private Pokemon PokemonToDisplay { get; set; }
+    
+    [Parameter]
+    private bool ValidSearchId { get; set; }
 }

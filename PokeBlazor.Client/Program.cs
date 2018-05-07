@@ -14,7 +14,7 @@ namespace PokeBlazor.Client
                 services.AddSingleton<PokeState>();
             });
 
-            new BrowserRenderer(serviceProvider).AddComponent<Main>("body");
+            new BrowserRenderer(serviceProvider).AddComponent<Main>("app");
         }
     }
 }
