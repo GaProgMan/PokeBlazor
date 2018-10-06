@@ -1,11 +1,10 @@
 # Stage 1: Compile and publish the source code
-FROM microsoft/dotnet:2.1-sdk-stretch AS builder
+FROM microsoft/dotnet:2.1-sdk-alpine AS builder
 WORKDIR /app
 COPY *.sln ./
 COPY PokeBlazor.Client ./PokeBlazor.Client
 COPY PokeBlazor.Server ./PokeBlazor.Server
 COPY PokeBlazor.Shared ./PokeBlazor.Shared
-COPY global.json global.json
 
 ## restore onto a separate layer. That way, we have a single 
 RUN dotnet restore
@@ -13,7 +12,7 @@ RUN dotnet restore
 RUN dotnet publish --configuration Release --no-restore --output /app/out /p:PublishWithAspNetCoreTargetManifest="false"
 
 # Stage 2: Copies the published code out to published image
-FROM microsoft/dotnet:2.1.0-preview2-aspnetcore-runtime-alpine
+FROM microsoft/dotnet:2.1-aspnetcore-runtime-alpine
 WORKDIR /app
 ENV ASPNETCORE_URLS http://+:5000
 
