@@ -1,5 +1,5 @@
 # Stage 1: Compile and publish the source code
-FROM microsoft/dotnet:2.1-sdk-stretch AS builder
+FROM microsoft/dotnet:2.1-sdk-alpine AS builder
 WORKDIR /app
 COPY *.sln ./
 COPY PokeBlazor.Client ./PokeBlazor.Client
