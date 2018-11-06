@@ -14,12 +14,14 @@ RUN dotnet publish --configuration Release --no-restore --output /app/out /p:Pub
 # Stage 2: Copies the published code out to published image
 FROM microsoft/dotnet:2.1-aspnetcore-runtime-alpine
 WORKDIR /app
-ENV ASPNETCORE_URLS http://+:5000
+ENV ASPNETCORE_URLS http://+:80
 
 COPY --from=builder /app/out .
 
 # Super hack to work around https://github.com/aspnet/Blazor/issues/376
 RUN mv -n wwwroot/* PokeBlazor.Client/dist
 RUN rm -rf wwwroot/
+
+EXPOSE 80
 
 ENTRYPOINT ["dotnet", "PokeBlazor.Server.dll"]
