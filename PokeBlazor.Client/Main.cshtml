@@ -6,7 +6,9 @@
     </div>
     <div id="results-area">
         <GreyOutZone Searching=state.SearchInProgress>
-            <RandomPokemonResult PokemonToDisplay=state.PokemonSearchResult ValidSearchId=state.SuppliedIdIsValid/>
+            <RandomPokemonResult
+                PokemonToDisplay=state.PokemonSearchResult
+                ValidSearchId=state.SuppliedIdIsValid/>
         </GreyOutZone>
     </div>
 </div>
@@ -15,6 +17,8 @@
 {
     protected override void OnInit()
     {
+        // We have to manually call `StateHasChanged` because Blazor's events
+        // do not yet support async handler methods.
         state.OnChange += StateHasChanged;
     }
 }
